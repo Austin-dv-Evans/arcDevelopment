@@ -7,6 +7,8 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import logo from '../../assets/logo.svg'
 
@@ -58,9 +60,19 @@ function ElevationScroll(props) {
 export default function Header(props){
     const classes = useStyles()
     const [value, setValue] = useState(0)
-    
+    const [anchorEl, setAnchorEl] = useState(null)
+    const [open, setOpen] = useState(false)
+
     const handleChange = (e, value) => {
         setValue(value)
+    }
+    const handleClick = (e) => {
+        setAnchorEl(e.currentTarget)
+        setOpen(true)
+    }
+    const handleClose = (e) => {
+        setAnchorEl(null)
+        setOpen(false)
     }
 
     useEffect(() => {
@@ -84,9 +96,14 @@ export default function Header(props){
             <ElevationScroll>
                 <AppBar position="fixed" color="primary">
                     <Toolbar disableGutters>
-                        <Button disableRipple component={Link} to="/" onClick={() =>
-                             setValue(0)} className={classes.logoContainer} > 
-                            <img alt="company logo" src={logo} className={classes.logo}/>
+                        <Button disableRipple component={Link} 
+                            to="/" 
+                            onClick={() =>
+                            setValue(0)} className={classes.logoContainer} > 
+                            <img 
+                                alt="company logo" 
+                                src={logo} 
+                                className={classes.logo}/>
                         </Button>
                         <Tabs 
                             value={value} 
@@ -97,7 +114,10 @@ export default function Header(props){
                                 label="Home" 
                                 className={classes.tab} 
                                 component={Link} to="/"/>
-                            <Tab 
+                            <Tab
+                                aria-owns={anchorEl ? "simple-menu" : undefined}
+                                aria-haspopup={anchorEl ? "true" : undefined}
+                                onMouseOver={event => handleClick(event)} 
                                 label="Services" 
                                 className={classes.tab} 
                                 component={Link} to="/services"/>
@@ -121,6 +141,29 @@ export default function Header(props){
                             component={Link} to="/estimate">
                             Free Estimate
                         </Button>
+                        <Menu 
+                            id="simple-menu" 
+                            anchorEl={anchorEl} 
+                            open={open}
+                            onclose={handleClose}
+                            MenuListProps={{onMouseLeave: handleClose}} >
+                            <MenuItem 
+                                onClick={() => {handleClose(); setValue(1)}} 
+                                component={Link} to="/services"> 
+                            Services</MenuItem>
+                            <MenuItem 
+                                onClick={() => {handleClose(); setValue(1)}} 
+                                component={Link} to="/customsoftware"> 
+                            Custom Software</MenuItem>
+                            <MenuItem 
+                                onClick={() => {handleClose(); setValue(1)}} 
+                                component={Link} to="/mobileapps" > 
+                            Mobile App Development</MenuItem>
+                            <MenuItem 
+                                onClick={() => {handleClose(); setValue(1)}} 
+                                component={Link} to="/websites"> 
+                            Website Development</MenuItem>
+                        </Menu>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
