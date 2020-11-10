@@ -305,13 +305,18 @@ export default function LandingPage(props){
             </Grid>
                             {/* ------ Information BLOCK ------- */}
             <Grid item>
-                <Grid direction="row" alignItems="center" container style={{height: "80em"}}>
+                <Grid container
+                    className={classes.infoBackground}
+                    direction="row" 
+                    alignItems="center" 
+                    style={{height: "80em"}}
+                    >
                     <Grid item container 
-                        style={{position: "absolute", textAlign: matchesXS ? "center" : "inherit"}} 
+                        style={{textAlign: matchesXS ? "center" : "inherit"}} 
                         direction={matchesXS ? "column" : "row"}
-                        spacing={matchesXS ? 10 : 0}>
+                        >
                         <Grid item sm style={{marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em"}}>
-                            <Grid container direction="column">
+                            <Grid style={{marginBottom: matchesXS ? "10em" : 0}} container direction="column">
                                 <Typography variant="h2" style={{color: "white"}}>
                                     About Us
                                 </Typography>
@@ -352,7 +357,6 @@ export default function LandingPage(props){
                             </Grid>
                         </Grid>
                     </Grid>
-                    <div className={classes.infoBackground} />
                 </Grid>
             </Grid>
             <Grid item>

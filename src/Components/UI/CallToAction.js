@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down("sm")]: {
             marginRight: 0,
             marginLeft: 0
+        },
+        "&:hover":{
+            backgroundColor: theme.palette.secondary.light
         }
     }
 }))
