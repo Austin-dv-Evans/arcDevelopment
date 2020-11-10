@@ -10,12 +10,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 
+import CallToAction from './UI/CallToAction'
 
 import animationData from '../animations/landinganimation/data'
 import customSoftwareIcon from '../assets/Custom Software Icon.svg'
 import mobileAppsIcon from '../assets/mobileIcon.svg'
 import websitesIcon from '../assets/websiteIcon.svg'
 import revolutionBackground from '../assets/repeatingBackground.svg'
+import infoBackground from'../assets/infoBackground.svg'
 
 const useStyles = makeStyles(theme => ({
     animation: {
@@ -112,6 +114,14 @@ const useStyles = makeStyles(theme => ({
             borderRadius: 0,
             width: "100%"
         }
+    },
+    infoBackground: {
+        backgroundImage: `url(${infoBackground})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "100%",
+        width: "100%"
     }
 }))
 
@@ -119,6 +129,7 @@ export default function LandingPage(){
     const classes = useStyles()
     const theme = useTheme()
     const matchesSM = useMediaQuery(theme.breakpoints.down("sm"))
+    const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
 
     const defaultOptions = {
         loop: true,
@@ -244,6 +255,7 @@ export default function LandingPage(){
                     </Grid>
                 </Grid>
             </Grid>
+                            {/* ------ Revolution BLOCK ------- */}
             <Grid item>
                 <Grid container alignItems="center" justify="center" style={{height: "100em", marginTop:"12em"}}>
                     <Card className={classes.revolutionCard}>
@@ -270,7 +282,56 @@ export default function LandingPage(){
                     </Card>
                     <div className={classes.revolutionBackground} />
                 </Grid>
-                
+            </Grid>
+                            {/* ------ Information BLOCK ------- */}
+            <Grid item>
+                <Grid direction="row" alignItems="center" container style={{height: "80em"}}>
+                    <Grid item container 
+                        style={{position: "absolute", textAlign: matchesXS ? "center" : "inherit"}} 
+                        direction={matchesXS ? "column" : "row"}
+                        spacing={matchesXS ? 10 : 0}>
+                        <Grid item sm style={{marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em"}}>
+                            <Grid container direction="column">
+                                <Typography variant="h2" style={{color: "white"}}>
+                                    About Us
+                                </Typography>
+                                <Typography variant="subtitle2">
+                                    Lets get personal!
+                                </Typography>
+                                <Grid item>
+                                    <Button className={classes.learnButton} 
+                                        style={{color: "white", borderColor: "white"}} variant="outlined">
+                                        <span style={{ marginRight: 10}}>Learn More</span>
+                                        <ButtonArrow width={15} height={15} fill="white"/>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid item sm 
+                            style={{marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em", textAlign: matchesXS ? "center" : "right"}}>
+                            <Grid container direction="column">
+                                <Typography variant="h2" style={{color: "white"}}>
+                                    Contact Us
+                                </Typography>
+                                <Typography variant="subtitle2">
+                                    Say hello! <span role="img" aria-label="waving hand">👋</span>
+                                </Typography>
+                                <Grid item>
+                                    <Button className={classes.learnButton} 
+                                        style={{color: "white", borderColor: "white"}} variant="outlined">
+                                        <span style={{ marginRight: 10}}>Learn More</span>
+                                        <ButtonArrow width={15} height={15} fill="white"/>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <div className={classes.infoBackground} />
+                </Grid>
+            </Grid>
+            <Grid item>
+                {/* ------ Call to Action BLOCK ------- */}
+                <CallToAction />
             </Grid>
         </Grid>
     )
