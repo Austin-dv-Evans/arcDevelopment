@@ -32,92 +32,92 @@ function ElevationScroll(props) {
     });
   }
   
-    const useStyles = makeStyles(theme => ({
-        toolbarMargin: {
-            ...theme.mixins.toolbar,
-            marginBottom: "3em",
-            [theme.breakpoints.down("md")]: {
-                marginBottom: "2em"
-            },
-            [theme.breakpoints.down("xs")]: {
-                marginBottom: "1.25em"
-            }
+const useStyles = makeStyles(theme => ({
+    toolbarMargin: {
+        ...theme.mixins.toolbar,
+        marginBottom: "3em",
+        [theme.breakpoints.down("md")]: {
+            marginBottom: "2em"
         },
-        logo :{
-            height: "8em",
-            [theme.breakpoints.down("md")]: {
-                height: "7em"
-            },
-            [theme.breakpoints.down("xs")]: {
-                height: "5.5em"
-            }
-        },
-        logoContainer: {
-            padding: 0,
-            "&:hover" : {
-                backgroundColor: "transparent"
-            }
-        },
-        tabContainer: {
-            marginLeft: "auto"
-        },
-        tab: {
-            ...theme.typography.tab,
-            minWidth: 10,
-            marginLeft: "25px"
-        },
-        button: {
-            ...theme.typography.estimate,
-            borderRadius: "50px",
-            marginLeft: "50px",
-            marginRight: "50px",
-            height: "45px",
-            "&:hover":{
-                backgroundColor: theme.palette.secondary.light
-            }
-        },
-        menu: {
-            backgroundColor: theme.palette.common.blue,
-            color: "white",
-            borderRadius: "0px"
-        },
-        menuItem: {
-            ...theme.typography.tab,
-            opacity: 0.7,
-            "&:hover": {
-                opacity: 1
-            }
-        },
-        drawerIconContainer: {
-            marginLeft: "auto",
-            "&:hover": {
-                backgroundColor: "transparent"
-            }
-        },
-        drawerIcon: {
-            height: "50px",
-            width: "50px"
-        },
-        drawer: {
-            backgroundColor: theme.palette.common.blue
-        },
-        drawerItem: {
-            ...theme.typography.tab,
-            color: "white",
-            opacity: "0.7"
-        },
-        drawerItemEstimate: {
-            backgroundColor: theme.palette.common.orange
-        },
-        drawerItemSelected: {
-            "& .MuiListItemText-root":{
-                opacity: "1",
-            },
-        },
-        appbar: {
-            zIndex: theme.zIndex.modal + 1
+        [theme.breakpoints.down("xs")]: {
+            marginBottom: "1.25em"
         }
-    }))
+    },
+    logo :{
+        height: "8em",
+        [theme.breakpoints.down("md")]: {
+            height: "7em"
+        },
+        [theme.breakpoints.down("xs")]: {
+            height: "5.5em"
+        }
+    },
+    logoContainer: {
+        padding: 0,
+        "&:hover" : {
+            backgroundColor: "transparent"
+        }
+    },
+    tabContainer: {
+        marginLeft: "auto"
+    },
+    tab: {
+        ...theme.typography.tab,
+        minWidth: 10,
+        marginLeft: "25px"
+    },
+    button: {
+        ...theme.typography.estimate,
+        borderRadius: "50px",
+        marginLeft: "50px",
+        marginRight: "50px",
+        height: "45px",
+        "&:hover":{
+            backgroundColor: theme.palette.secondary.light
+        }
+    },
+    menu: {
+        backgroundColor: theme.palette.common.blue,
+        color: "white",
+        borderRadius: "0px"
+    },
+    menuItem: {
+        ...theme.typography.tab,
+        opacity: 0.7,
+        "&:hover": {
+            opacity: 1
+        }
+    },
+    drawerIconContainer: {
+        marginLeft: "auto",
+        "&:hover": {
+            backgroundColor: "transparent"
+        }
+    },
+    drawerIcon: {
+        height: "50px",
+        width: "50px"
+    },
+    drawer: {
+        backgroundColor: theme.palette.common.blue
+    },
+    drawerItem: {
+        ...theme.typography.tab,
+        color: "white",
+        opacity: "0.7"
+    },
+    drawerItemEstimate: {
+        backgroundColor: theme.palette.common.orange
+    },
+    drawerItemSelected: {
+        "& .MuiListItemText-root":{
+            opacity: "1",
+        },
+    },
+    appbar: {
+        zIndex: theme.zIndex.modal + 1
+    }
+}))
 
 export default function Header (props) {
     
@@ -130,7 +130,6 @@ export default function Header (props) {
     const [openMenu, setOpenMenu] = useState(false)
     
     
-
     const handleChange = (e, newValue) => {
         props.setValue(newValue)
     }
@@ -164,6 +163,7 @@ export default function Header (props) {
     {name: "About Us", link: "/about", activeIndex: 3,},
     {name: "Contact Us", link: "/contact", activeIndex: 4,}]
 
+    
     useEffect(() => {
         [...menuOptions, ...routes].forEach(route => {
             switch (window.location.pathname){
